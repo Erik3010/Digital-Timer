@@ -1,2 +1,2 @@
 # Digital-Timer
-7 segment digital timer using javascript (not really accurate timer)
+7 segment digital timer using vanilla Javascript (not really accurate timer)
