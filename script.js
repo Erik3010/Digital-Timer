@@ -3,6 +3,8 @@ let centiSecond = 0;
 
 let secondDigit = document.querySelectorAll('.second'); 
 let centiSecDigit = document.querySelectorAll('.centisecond');
+
+let btnStart = document.querySelector('.btn-start');
 // let segment = document.querySelectorAll('.segment');
 
 let digitSegment = [
@@ -40,10 +42,14 @@ function secondCounter() {
     // }, 1)
 }
 
+let timeOut;
+let stoped = false;
+// let reset = false;
+
 function centiCounter() {
     centiSecond++;
 
-    console.log(centiSecond)
+    // console.log(reset)
 
     let cenSecondOne = Math.floor((centiSecond/10)%10);
     let cenSecondTwo = centiSecond%10;
@@ -54,12 +60,34 @@ function centiCounter() {
     if(centiSecond >= 100) {
         centiSecond = 0;
         secondCounter();
-        setTimeout(centiCounter, 10);
+        timeout = setTimeout(centiCounter, 10);
     }else{
-        setTimeout(centiCounter, 10);
+        timeout = setTimeout(centiCounter, 10);
     }
 }
-// centiCounter();
+centiCounter();
+
+function reseted() {
+    centiSecond = 0;
+    timeSecond = 0;
+    stop();
+    console.log(centiSecond, timeSecond)
+    
+}
+
+function stop() {
+    clearTimeout(timeout);
+    stoped = false;
+    btnStart.disabled = false;
+}
+
+function start() {
+    if(!stoped) {
+        btnStart.disabled = true;
+        timeout = setTimeout(centiCounter, 10);
+    }
+}
+
 // setInterval(() => {
 //     centiSecond++;
 
